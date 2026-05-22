@@ -46,6 +46,7 @@
     "@types/react": "*",
     "@types/react-dom": "*",
     "@vitejs/plugin-react": "*",
+    "typescript": "*",
     
     "class-variance-authority": "*",
     "clsx": "*",

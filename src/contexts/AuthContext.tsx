@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   updateProfile,
   AuthError,
@@ -44,7 +45,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   async function loginWithGoogle() {
-    await signInWithPopup(auth, googleProvider);
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err: any) {
+      // Some environments (embedded browsers, Codespaces previews) block popups.
+      // Fall back to redirect sign-in if popup is not available.
+      const code = err?.code || "";
+      if (code === "auth/operation-not-supported-in-this-environment" || code === "auth/popup-blocked" || code === "auth/operation-not-allowed") {
+        await signInWithRedirect(auth, googleProvider);
+        return;
+      }
+      throw err;
+    }
   }
 
   async function logout() {
