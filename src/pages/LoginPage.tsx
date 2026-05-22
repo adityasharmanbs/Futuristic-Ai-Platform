@@ -59,12 +59,12 @@ export default function LoginPage() {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.2, 0.12] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" as any }}
           className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/20 blur-[100px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.18, 0.1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" as any, delay: 2 }}
           className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-secondary/20 blur-[100px]"
         />
       </div>

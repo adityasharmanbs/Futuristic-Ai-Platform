@@ -68,7 +68,7 @@ function CountUp({ target, format }: { target: number; format?: (v: number) => s
   const inView = useInView(ref, { once: true });
   useEffect(() => {
     if (!inView) return;
-    const c = animate(0, target, { duration: 1.8, ease: "easeOut", onUpdate: (v) => setDisplay(v) });
+    const c = animate(0, target, { duration: 1.8, ease: "easeOut" as any, onUpdate: (v) => setDisplay(v) });
     return () => c.stop();
   }, [inView, target]);
   const fmt = format ?? ((v: number) => {
@@ -283,7 +283,7 @@ export default function Dashboard() {
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{ width: `${usage}%` }}
-                              transition={{ delay: 0.4 + i * 0.1, duration: 0.9, ease: "easeOut" }}
+                              transition={{ delay: 0.4 + i * 0.1, duration: 0.9, ease: "easeOut" as any }}
                               className={`h-full bg-gradient-to-r ${color} rounded-full`}
                             />
                           </div>
@@ -446,7 +446,7 @@ export default function Dashboard() {
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${score}%` }}
-                        transition={{ delay: 0.3 + i * 0.1, duration: 1, ease: "easeOut" }}
+                        transition={{ delay: 0.3 + i * 0.1, duration: 1, ease: "easeOut" as any }}
                         className={`h-full bg-gradient-to-r ${color} rounded-full`}
                       />
                     </div>

@@ -353,7 +353,7 @@ export default function Analytics() {
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${score}%` }}
-                    transition={{ delay: 0.6 + i * 0.1, duration: 0.9, ease: "easeOut" }}
+                    transition={{ delay: 0.6 + i * 0.1, duration: 0.9, ease: "easeOut" as any }}
                     className="h-full rounded-full"
                     style={{ background: `hsl(${190 - i * 14} ${90 - i * 4}% ${50 + i * 2}%)` }}
                   />

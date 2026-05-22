@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppLayout } from "@/components/AppLayout";
 import {
-  Sparkles, Youtube, Instagram, Copy, RefreshCw, Zap, CheckCheck,
+  Sparkles, Video as Youtube, Camera as Instagram, Copy, RefreshCw, Zap, CheckCheck,
   Clock, Lightbulb, TrendingUp, Wand2, Star,
   Hash, ArrowUpRight, X, ChevronRight,
 } from "lucide-react";
@@ -1433,7 +1433,7 @@ export default function PromptStudio() {
               <div className="mt-3 h-1 bg-muted/30 rounded-full overflow-hidden">
                 <motion.div
                   animate={{ width: `${Math.min(((1847 + generationCount) / 2000) * 100, 100)}%` }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+                  transition={{ duration: 1, ease: "easeOut" as any }}
                   className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
                 />
               </div>

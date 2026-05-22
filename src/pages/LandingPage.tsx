@@ -51,7 +51,7 @@ function CountUp({ target, suffix, decimal }: { target: number; suffix: string; 
     if (!inView) return;
     const controls = animate(0, target, {
       duration: 2,
-      ease: "easeOut",
+      ease: "easeOut" as any,
       onUpdate: (v) => setVal(decimal ? Math.round(v * 10) / 10 : Math.round(v)),
     });
     return () => controls.stop();
@@ -66,7 +66,7 @@ const containerVariants = {
 };
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as any } },
 };
 
 export default function LandingPage() {
