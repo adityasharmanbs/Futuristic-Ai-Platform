@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -107,22 +108,32 @@ export function Sidebar() {
           })}
         </nav>
 
-        <div className="p-3 border-t border-sidebar-border">
-          <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-accent transition-colors cursor-pointer">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-secondary to-primary flex-shrink-0 flex items-center justify-center text-xs font-bold text-white shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-              AR
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-semibold text-foreground truncate">Alex Rivera</p>
-              <p className="text-[10px] text-muted-foreground truncate">alex@creator.os</p>
-            </div>
-            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
-              <Crown size={9} className="text-primary" />
-              <span className="text-[9px] font-bold text-primary">PRO</span>
-            </div>
-          </div>
-        </div>
+        <AuthFooter />
       </motion.aside>
     </>
+  );
+}
+
+function AuthFooter() {
+  const { user } = useAuth();
+  const displayName = user?.displayName || user?.email?.split("@")[0] || "Creator";
+  const email = user?.email || "";
+
+  return (
+    <div className="p-3 border-t border-sidebar-border">
+      <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-accent transition-colors cursor-pointer">
+        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-secondary to-primary flex-shrink-0 flex items-center justify-center text-xs font-bold text-white shadow-[0_0_10px_rgba(139,92,246,0.4)]">
+          {displayName.split(" ").map(n => n[0]).join("").slice(0,2).toUpperCase()}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-semibold text-foreground truncate">{displayName}</p>
+          <p className="text-[10px] text-muted-foreground truncate">{email}</p>
+        </div>
+        <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
+          <Crown size={9} className="text-primary" />
+          <span className="text-[9px] font-bold text-primary">PRO</span>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -8,7 +8,6 @@ export default defineConfig(async ({ mode }) => {
     mode === "development"
       ? [
           (await import("@replit/vite-plugin-runtime-error-modal")).default(),
-          (await import("@replit/vite-plugin-cartographer")).cartographer(),
         ]
       : [];
 
