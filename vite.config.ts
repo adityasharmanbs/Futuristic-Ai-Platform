@@ -3,16 +3,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
-export default defineConfig(async ({ mode }) => {
-  const devPlugins =
-    mode === "development"
-      ? [
-          (await import("@replit/vite-plugin-runtime-error-modal")).default(),
-        ]
-      : [];
-
+export default defineConfig(({ mode }) => {
   return {
-    plugins: [react(), tailwindcss(), ...devPlugins],
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
